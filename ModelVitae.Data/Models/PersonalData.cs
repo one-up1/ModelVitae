@@ -2,6 +2,8 @@
 {
     public class PersonalData
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public string Address { get; set; }
@@ -10,14 +12,14 @@
     }
 
     public enum Gender
-    {​​​​​​​
+    {
         Male,
         Female,
         Other
-    }​​​​​​​
+    }
 
     public enum EyeColor
-    {​​​​​​​
+    {
         Amber,
         Blue,
         Brown,
@@ -26,5 +28,5 @@
         Hazel,
         Heterochromatic,
         Other
-    }​​​​​​​
+    }
 }
