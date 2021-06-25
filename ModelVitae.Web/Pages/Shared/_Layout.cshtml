@@ -30,6 +30,19 @@
                         </li>
                     </ul>
                 </div>
+                <div class="col-md-4">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <h3>Hi @User.Identity.Name!</h3>
+                        <a asp-controller="Account" asp-action="Logout" class="btn btn-primary">Logout</a>
+                    }
+                    else
+                    {
+                        <h3>Login here: </h3>
+                        <a asp-controller="Account" asp-action="Login" class="btn btn-primary">Login</a>
+
+                    }
+                </div>
             </div>
         </nav>
     </header>
