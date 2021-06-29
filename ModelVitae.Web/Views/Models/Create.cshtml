@@ -13,6 +13,21 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="PersonalData.Name" class="control-label"></label>
+                <input asp-for="PersonalData.Name" class="form-control" />
+                <span asp-validation-for="PersonalData.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalData.Address" class="control-label"></label>
+                <input asp-for="PersonalData.Address" class="form-control" />
+                <span asp-validation-for="PersonalData.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalData.City" class="control-label"></label>
+                <input asp-for="PersonalData.City" class="form-control" />
+                <span asp-validation-for="PersonalData.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Gender" class="control-label"></label>
                 <select asp-for="Gender" asp-items="Html.GetEnumSelectList<ModelVitae.Data.Models.Gender>()" class="form-control"></select>
                 <span asp-validation-for="Gender" class="text-danger"></span>

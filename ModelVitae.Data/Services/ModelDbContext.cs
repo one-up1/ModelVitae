@@ -17,6 +17,8 @@ namespace ModelVitae.Data.Services
 
         public DbSet<Customer> Customers { get; set; }
 
+        public DbSet<PersonalData> PersonalData { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(config.GetConnectionString("ModelVitae"));

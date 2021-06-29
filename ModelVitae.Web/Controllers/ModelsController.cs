@@ -19,7 +19,9 @@ namespace ModelVitae.Web.Controllers
         // GET: Models
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Models.ToListAsync());
+            return View(await _context.Models
+                .Include(m => m.PersonalData)
+                .ToListAsync());
         }
 
         // GET: Models/Details/5
@@ -31,6 +33,7 @@ namespace ModelVitae.Web.Controllers
             }
 
             var model = await _context.Models
+                .Include(m => m.PersonalData)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (model == null)
             {
@@ -51,7 +54,7 @@ namespace ModelVitae.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Gender,DateOfBirth,Weight,Height,Waist,Image,PhoneNumber,EmailAdress,EyeColor,HairColor")] Model model)
+        public async Task<IActionResult> Create([Bind("Id,PersonalData,Gender,DateOfBirth,Weight,Height,Waist,Image,PhoneNumber,EmailAdress,EyeColor,HairColor")] Model model)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +73,9 @@ namespace ModelVitae.Web.Controllers
                 return NotFound();
             }
 
-            var model = await _context.Models.FindAsync(id);
+            var model = await _context.Models
+                .Include(m => m.PersonalData)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (model == null)
             {
                 return NotFound();
@@ -83,7 +88,7 @@ namespace ModelVitae.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Gender,DateOfBirth,Weight,Height,Waist,Image,PhoneNumber,EmailAdress,EyeColor,HairColor")] Model model)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PersonalData,Gender,DateOfBirth,Weight,Height,Waist,Image,PhoneNumber,EmailAdress,EyeColor,HairColor")] Model model)
         {
             if (id != model.Id)
             {
@@ -122,6 +127,7 @@ namespace ModelVitae.Web.Controllers
             }
 
             var model = await _context.Models
+                .Include(m => m.PersonalData)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (model == null)
             {
