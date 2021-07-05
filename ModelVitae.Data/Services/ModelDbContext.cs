@@ -17,11 +17,20 @@ namespace ModelVitae.Data.Services
 
         public DbSet<Customer> Customers { get; set; }
 
-        public DbSet<PersonalData> PersonalData { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(config.GetConnectionString("ModelVitae"));
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Model>()
+                .HasOne(m => m.PersonalData)
+                .WithOne()
+                //.IsRequired()
+                .HasForeignKey<PersonalData>()
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
