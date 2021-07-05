@@ -2,11 +2,9 @@
 
 namespace ModelVitae.Data.Models
 {
-    public class Model
+    public class Model : PersonalData
     {
         public int Id { get; set; }
-
-        public PersonalData PersonalData { get; set; }
 
         public Gender Gender { get; set; }
 
@@ -27,5 +25,24 @@ namespace ModelVitae.Data.Models
         public EyeColor EyeColor { get; set; }
 
         public string HairColor { get; set; }
+    }
+
+    public enum Gender
+    {
+        Male,
+        Female,
+        Other
+    }
+
+    public enum EyeColor
+    {
+        Amber,
+        Blue,
+        Brown,
+        Gray,
+        Green,
+        Hazel,
+        Heterochromatic,
+        Other
     }
 }

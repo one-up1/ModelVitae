@@ -1,10 +1,8 @@
 ﻿namespace ModelVitae.Data.Models
 {
-    public class Customer
+    public class Customer : PersonalData
     {
         public int Id { get; set; }
-        
-        public PersonalData PersonalData { get; set; }
 
         public byte[] Logo { get; set; }
 

@@ -21,16 +21,5 @@ namespace ModelVitae.Data.Services
         {
             optionsBuilder.UseSqlServer(config.GetConnectionString("ModelVitae"));
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Model>()
-                .HasOne(m => m.PersonalData)
-                .WithOne()
-                //.IsRequired()
-                .HasForeignKey<PersonalData>()
-                .OnDelete(DeleteBehavior.Cascade);
-        }
     }
 }
