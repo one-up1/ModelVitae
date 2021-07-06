@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using ModelVitae.Data.Models;
 using ModelVitae.Data.Services;
 
@@ -10,10 +12,12 @@ namespace ModelVitae.Web.Controllers
     public class ModelsController : Controller
     {
         private readonly ModelDbContext _context;
+        private readonly IHostEnvironment hostingEnvironment;
 
-        public ModelsController(ModelDbContext context)
+        public ModelsController(ModelDbContext context, IHostEnvironment environment)
         {
             _context = context;
+            hostingEnvironment = environment;
         }
 
         // GET: Models
@@ -55,6 +59,12 @@ namespace ModelVitae.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (model.Image != null)
+                {
+                    model.ImageName = model.Image.FileName;
+                    model.Image.CopyTo(new FileStream(Path.Combine(Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot/uploads"), model.ImageName), FileMode.Create));
+                }
+
                 _context.Add(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -94,6 +104,12 @@ namespace ModelVitae.Web.Controllers
             {
                 try
                 {
+                    if (model.Image != null)
+                    {
+                        model.ImageName = model.Image.FileName;
+                        model.Image.CopyTo(new FileStream(Path.Combine(Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot/uploads"), model.ImageName), FileMode.Create));
+                    }
+
                     _context.Update(model);
                     await _context.SaveChangesAsync();
                 }

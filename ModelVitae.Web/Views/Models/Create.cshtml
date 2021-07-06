@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -53,10 +53,30 @@
                 <span asp-validation-for="Waist" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
+                <label asp-for="Image" asp-items="Html.GetEnumSelectList<ModelVitae.Data.Models.Image>()" class="form-control">
+                    </select>
+                    if (Image != null && image.Length > 0)
+                    {
+                    Path.Revert(image.panth >= 2)
+                    {
+                    String path = image.Path;
+                    if (path != null)
+                    {
+                        Log.d(TAG, "Reverting " + path);
+                        <input asp-for="Image" class="form-control" value="path" />
+                    }
+
+                    <span asp-validation-for="Image" class="form-control"></span>
+                    if (image.Path != null) {
+                    echo "<span asp-validation-for=\\" Image\\" class=\\"Image.Path\\" !=Video.Image" !=false))
+                                {
+                                if (@image.Path !=null) {
+                                File.Delete()
+                                }
+                                }
+                                }
+                </span>
+</div>
             <div class="form-group">
                 <label asp-for="PhoneNumber" class="control-label"></label>
                 <input asp-for="PhoneNumber" class="form-control" />

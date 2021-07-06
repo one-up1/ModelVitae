@@ -62,7 +62,8 @@
             @Html.DisplayNameFor(model => model.Image)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Image)
+            @if (model.Image => model.ImageN
+            <img src="~/uploads/@Model.ImageName"  />
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PhoneNumber)

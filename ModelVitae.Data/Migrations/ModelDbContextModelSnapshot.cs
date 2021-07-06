@@ -80,8 +80,8 @@ namespace ModelVitae.Data.Migrations
                     b.Property<double>("Height")
                         .HasColumnType("float");
 
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
